@@ -22,7 +22,7 @@ const createUser = asyncHandler(async (req, res) => {
    */
   const email = req.body.email;
 
-  const id = 0;
+  const id = 999;
   // Keep count of all users and update userID
   const count = await User.countDocuments();
   const userId = id + 1 + count;
@@ -210,7 +210,7 @@ const saveAddress = asyncHandler(async (req, res, next) => {
 
 const getallUser = asyncHandler(async (req, res) => {
   try {
-    const getUsers = await User.find().populate("wishlist");
+    const getUsers = await User.find();
     res.json(getUsers);
   } catch (error) {
     throw new Error(error);
