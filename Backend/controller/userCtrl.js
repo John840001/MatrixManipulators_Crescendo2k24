@@ -21,6 +21,11 @@ const createUser = asyncHandler(async (req, res) => {
    * TODO:Get the email from req.body
    */
   const email = req.body.email;
+
+  const id = 0;
+  // Keep count of all users and update userID
+  const count = await User.countDocuments();
+  const userId = id + 1 + count;
   /**
    * TODO:With the help of email find the user exists or not
    */
@@ -30,7 +35,16 @@ const createUser = asyncHandler(async (req, res) => {
     /**
      * TODO:if user not found user create a new user
      */
-    const newUser = await User.create(req.body);
+    const newUser = await User.create({
+      userId: userId,
+      firstname: req.body.firstname,
+      lastname: req.body.lastname,
+      email: req.body.email,
+      mobile: req.body.mobile,
+      password: req.body.password,
+      role: req.body.role,
+      address: req.body.address,
+    });
     res.json(newUser);
   } else {
     /**
