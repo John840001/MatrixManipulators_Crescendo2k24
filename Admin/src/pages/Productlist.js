@@ -9,33 +9,40 @@ import { delImg } from "../features/upload/uploadSlice";
 import CustomModal from "../components/CustomModal";
 const columns = [
   {
-    title: "SNo",
+    title: "Product ID",
     dataIndex: "key",
   },
   {
-    title: "Title",
-    dataIndex: "title",
-    sorter: (a, b) => a.title.length - b.title.length,
+    title: "Name",
+    dataIndex: "name",
   },
   {
     title: "Brand",
     dataIndex: "brand",
-    sorter: (a, b) => a.brand.length - b.brand.length,
   },
   {
-    title: "Category",
-    dataIndex: "category",
-    sorter: (a, b) => a.category.length - b.category.length,
-  },
-
-  {
-    title: "Quantity",
-    dataIndex: "quantity",
+    title: "Cost Price",
+    dataIndex: "costPrice",
   },
   {
-    title: "Price",
-    dataIndex: "price",
-    sorter: (a, b) => a.price - b.price,
+    title: "Selling Price",
+    dataIndex: "sellingPrice",
+  },
+  {
+    title: "Purchased Date",
+    dataIndex: "purchasedDate",
+  },
+  {
+    title: "Purchased Season",
+    dataIndex: "purchasedSeason",
+  },
+  {
+    title: "Available Quantity",
+    dataIndex: "availQuantity",
+  },
+  {
+    title: "Ratings",
+    dataIndex: "ratings",
   },
   {
     title: "Action",
@@ -62,13 +69,15 @@ const Productlist = () => {
   const data1 = [];
   for (let i = 0; i < productState.length; i++) {
     data1.push({
-      key: i + 1,
-      title: productState[i].title,
+      key: 999 + 1 + i,
+      name: productState[i].name,
       brand: productState[i].brand,
-      category: productState[i].category,
-      color: productState[i].color,
-      quantity: productState[i].quantity,
-      price: `${productState[i].price}`,
+      costPrice: productState[i].costPrice,
+      sellingPrice: productState[i].sellingPrice,
+      purchasedDate: productState[i].purchasedDate,
+      purchasedSeason: productState[i].purchasedSeason,
+      availQuantity: productState[i].availQuantity,
+      ratings: productState[i].ratings,
       action: (
         <>
           <Link

@@ -12,7 +12,7 @@ import {
   updateAProductCategory,
 } from "../features/pcategory/pcategorySlice";
 let schema = yup.object().shape({
-  title: yup.string().required("Category Name is Required"),
+  name: yup.string().required("Category Name is Required"),
 });
 const Addcat = () => {
   const dispatch = useDispatch();
@@ -76,14 +76,14 @@ const Addcat = () => {
         <form action="" onSubmit={formik.handleSubmit}>
           <CustomInput
             type="text"
-            label="Enter Product Category"
-            onChng={formik.handleChange("title")}
-            onBlr={formik.handleBlur("title")}
-            val={formik.values.title}
+            label="Enter Product Season Category"
+            onChng={formik.handleChange("name")}
+            onBlr={formik.handleBlur("name")}
+            val={formik.values.name}
             id="brand"
           />
           <div className="error">
-            {formik.touched.title && formik.errors.title}
+            {formik.touched.name && formik.errors.name}
           </div>
           <button
             className="btn btn-success border-0 rounded-3 my-5"

@@ -23,15 +23,14 @@ const updateProduct = async (product) => {
   const response = await axios.put(
     `${base_url}product/${product.id}`,
     {
-      title: product.productData.title,
-      description: product.productData.description,
-      price: product.productData.price,
+      name: product.productData.name,
       brand: product.productData.brand,
-      quantity: product.productData.quantity,
-      category: product.productData.category,
-      tags: product.productData.tags,
-      color: product.productData.color,
-      images: product.productData.images,
+      costPrice: product.productData.costPrice,
+      sellingPrice: product.productData.sellingPrice,
+      purchasedDate: product.productData.purchasedDate,
+      purchasedSeason: product.productData.purchasedSeason,
+      availQuantity: product.productData.availQuantity,
+      ratings: product.productData.ratings,
     },
     config
   );
