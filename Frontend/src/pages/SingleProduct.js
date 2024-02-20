@@ -4,7 +4,7 @@ import BreadCrumb from "../components/BreadCrumb";
 import Meta from "../components/Meta";
 import ProductCard from "../components/ProductCard";
 import ReactImageZoom from "react-image-zoom";
-import Color from "../components/Color";
+// import Color from "../components/Color";
 import { TbGitCompare } from "react-icons/tb";
 import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 import { Link, useLocation, useNavigate } from "react-router-dom";
@@ -51,14 +51,14 @@ const SingleProduct = () => {
   });
 
   const uploadCart = () => {
-    if (color === null) {
+    if (color !== null) {
       toast.error("Please choose Color");
     } else {
       dispatch(
         addProdToCart({
           productId: productState?._id,
           quantity,
-          color,
+          // color,
           price: productState?.price,
         }),
         navigate("/cart")
@@ -211,7 +211,7 @@ const SingleProduct = () => {
                     </span>
                   </div>
                 </div> */}
-                {alreadyAdded === false && (
+                {/* {alreadyAdded === false && (
                   <div className="d-flex gap-10 flex-column mt-2 mb-3">
                     <h3 className="product-heading">Color :</h3>
                     <Color
@@ -219,7 +219,7 @@ const SingleProduct = () => {
                       colorData={productState?.color}
                     />
                   </div>
-                )}
+                )} */}
 
                 <div className="d-flex align-items-center gap-15 flex-row mt-2 mb-3">
                   <h3 className="product-heading">Quantity :</h3>

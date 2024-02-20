@@ -30,7 +30,6 @@ const updateProduct = async (product) => {
       quantity: product.productData.quantity,
       category: product.productData.category,
       tags: product.productData.tags,
-      color: product.productData.color,
       images: product.productData.images,
     },
     config

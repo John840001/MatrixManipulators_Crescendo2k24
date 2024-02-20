@@ -9,7 +9,6 @@ import { useFormik } from "formik";
 import { useDispatch, useSelector } from "react-redux";
 import { getBrands } from "../features/brand/brandSlice";
 import { getCategories } from "../features/pcategory/pcategorySlice";
-import { getColors } from "../features/color/colorSlice";
 import { Select } from "antd";
 import Dropzone from "react-dropzone";
 import { delImg, uploadImg } from "../features/upload/uploadSlice";
@@ -26,10 +25,10 @@ let schema = yup.object().shape({
   brand: yup.string().required("Brand is Required"),
   category: yup.string().required("Category is Required"),
   tags: yup.string().required("Tag is Required"),
-  color: yup
-    .array()
-    .min(1, "Pick at least one color")
-    .required("Color is Required"),
+  // color: yup
+  //   .array()
+  //   .min(1, "Pick at least one color")
+  //   .required("Color is Required"),
   quantity: yup.number().required("Quantity is Required"),
 });
 
@@ -38,18 +37,18 @@ const Addproduct = () => {
   const location = useLocation();
   const getProductId = location.pathname.split("/")[3];
   const navigate = useNavigate();
-  const [color, setColor] = useState([]);
+  // const [color, setColor] = useState([]);
   const [images, setImages] = useState([]);
-  console.log(color);
+  // console.log(color);
   useEffect(() => {
     dispatch(getBrands());
     dispatch(getCategories());
-    dispatch(getColors());
+    // dispatch(getColors());
   }, []);
 
   const brandState = useSelector((state) => state.brand.brands);
   const catState = useSelector((state) => state.pCategory.pCategories);
-  const colorState = useSelector((state) => state.color.colors);
+  // const colorState = useSelector((state) => state.color.colors);
   const imgState = useSelector((state) => state?.upload?.images);
   const newProduct = useSelector((state) => state.product);
   const {
@@ -64,7 +63,7 @@ const Addproduct = () => {
     productBrand,
     productCategory,
     productTag,
-    productColors,
+    // productColors,
     productQuantity,
     productImages,
   } = newProduct;
@@ -88,51 +87,51 @@ const Addproduct = () => {
       toast.error("Something Went Wrong!");
     }
   }, [isSuccess, isError, isLoading]);
-  const coloropt = [];
-  colorState.forEach((i) => {
-    coloropt.push({
-      label: (
-        <div className="col-3">
-          <ul
-            className="colors ps-0"
-            style={{
-              width: "20px",
-              height: "20px",
-              marginBottom: "10px",
-              backgroundColor: i.title,
-              borderRadius: "50%", // Added inline style for rounded shape
-              listStyle: "none", // Hide bullet points
-              border: "2px solid transparent",
-            }}
-          ></ul>
-        </div>
-      ),
-      value: i._id,
-    });
-  });
+  // const coloropt = [];
+  // colorState.forEach((i) => {
+  //   coloropt.push({
+  //     label: (
+  //       <div className="col-3">
+  //         <ul
+  //           className="colors ps-0"
+  //           style={{
+  //             width: "20px",
+  //             height: "20px",
+  //             marginBottom: "10px",
+  //             backgroundColor: i.title,
+  //             borderRadius: "50%", // Added inline style for rounded shape
+  //             listStyle: "none", // Hide bullet points
+  //             border: "2px solid transparent",
+  //           }}
+  //         ></ul>
+  //       </div>
+  //     ),
+  //     value: i._id,
+  //   });
+  // });
 
-  const productcolor = [];
-  productColors?.forEach((i) => {
-    productcolor.push({
-      label: (
-        <div className="col-3">
-          <ul
-            className="colors ps-0"
-            style={{
-              width: "20px",
-              height: "20px",
-              marginBottom: "10px",
-              backgroundColor: i.title,
-              borderRadius: "50%", // Added inline style for rounded shape
-              listStyle: "none", // Hide bullet points
-              border: "2px solid transparent",
-            }}
-          ></ul>
-        </div>
-      ),
-      value: i._id,
-    });
-  });
+  // const productcolor = [];
+  // productColors?.forEach((i) => {
+  //   productcolor.push({
+  //     label: (
+  //       <div className="col-3">
+  //         <ul
+  //           className="colors ps-0"
+  //           style={{
+  //             width: "20px",
+  //             height: "20px",
+  //             marginBottom: "10px",
+  //             backgroundColor: i.title,
+  //             borderRadius: "50%", // Added inline style for rounded shape
+  //             listStyle: "none", // Hide bullet points
+  //             border: "2px solid transparent",
+  //           }}
+  //         ></ul>
+  //       </div>
+  //     ),
+  //     value: i._id,
+  //   });
+  // });
 
   const img = [];
   imgState?.forEach((i) => {
@@ -151,9 +150,9 @@ const Addproduct = () => {
   });
 
   useEffect(() => {
-    formik.values.color = color ? color : " ";
+    // formik.values.color = color ? color : " ";
     formik.values.images = img;
-  }, [color, img]);
+  }, [img]);
   const formik = useFormik({
     initialValues: {
       title: productName || "",
@@ -162,7 +161,7 @@ const Addproduct = () => {
       brand: productBrand || "",
       category: productCategory || "",
       tags: productTag || "",
-      color: productColors || "",
+      // color: productColors || "",
       quantity: productQuantity || "",
       images: productImages || "",
     },
@@ -175,17 +174,17 @@ const Addproduct = () => {
       } else {
         dispatch(createProducts(values));
         formik.resetForm();
-        setColor(null);
+        // setColor(null);
         setTimeout(() => {
           dispatch(resetState());
         }, 3000);
       }
     },
   });
-  const handleColors = (e) => {
-    setColor(e);
-    console.log(color);
-  };
+  // const handleColors = (e) => {
+  //   setColor(e);
+  //   console.log(color);
+  // };
 
   return (
     <div>
@@ -289,7 +288,7 @@ const Addproduct = () => {
             {formik.touched.tags && formik.errors.tags}
           </div>
 
-          <Select
+          {/* <Select
             mode="multiple"
             allowClear
             className="w-100"
@@ -300,7 +299,7 @@ const Addproduct = () => {
           />
           <div className="error">
             {formik.touched.color && formik.errors.color}
-          </div>
+          </div> */}
           <CustomInput
             type="number"
             label="Enter Product Quantity"

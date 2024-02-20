@@ -22,10 +22,10 @@ const columns = [
     title: "Count",
     dataIndex: "count",
   },
-  {
-    title: "Color",
-    dataIndex: "color",
-  },
+  // {
+  //   title: "Color",
+  //   dataIndex: "color",
+  // },
   {
     title: "Amount",
     dataIndex: "amount",
@@ -49,21 +49,21 @@ const ViewOrder = () => {
       brand: orderState?.orderItems[i]?.product?.brand,
       count: orderState?.orderItems[i]?.quantity,
       amount: orderState?.orderItems[i]?.price,
-      color: (
-        <div className="col-3">
-          <ul
-            className="colors ps-0"
-            style={{
-              width: "30px",
-              height: "30px",
-              borderRadius: "50%",
-              marginBottom: "10px",
+      // color: (
+      //   <div className="col-3">
+      //     <ul
+      //       className="colors ps-0"
+      //       style={{
+      //         width: "30px",
+      //         height: "30px",
+      //         borderRadius: "50%",
+      //         marginBottom: "10px",
 
-              backgroundColor: orderState?.orderItems[i]?.color?.title,
-            }}
-          ></ul>
-        </div>
-      ),
+      //         backgroundColor: orderState?.orderItems[i]?.color?.title,
+      //       }}
+      //     ></ul>
+      //   </div>
+      // ),
     });
   }
   return (

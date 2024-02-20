@@ -112,7 +112,6 @@ export const productSlice = createSlice({
         state.productBrand = action.payload.brand;
         state.productCategory = action.payload.category;
         state.productTag = action.payload.tags;
-        state.productColors = action.payload.color;
         state.productQuantity = action.payload.quantity;
 
         state.productImages = action.payload.images;

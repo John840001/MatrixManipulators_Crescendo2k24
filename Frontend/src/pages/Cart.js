@@ -98,14 +98,14 @@ const Cart = () => {
                       <div className="w-75">
                         <p>{item?.productId.title}</p>
 
-                        <p className="d-flex gap-3">
+                        {/* <p className="d-flex gap-3">
                           Color:
                           <ul className="colors ps-0">
                             <li
                               style={{ backgroundColor: item?.color.title }}
                             ></li>
                           </ul>
-                        </p>
+                        </p> */}
                       </div>
                     </div>
                     <div className="cart-col-2">
