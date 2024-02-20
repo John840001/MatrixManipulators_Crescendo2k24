@@ -33,7 +33,6 @@ const Addproduct = () => {
   const location = useLocation();
   const getProductId = location.pathname.split("/")[3];
   const navigate = useNavigate();
-  console.log(color);
   useEffect(() => {
     dispatch(getBrands());
   }, []);
